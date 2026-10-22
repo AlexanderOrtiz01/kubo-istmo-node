@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istmo Express · Rastreo de envíos</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="marca"><span class="logo" aria-hidden="true">IX</span><span><strong>Istmo Express</strong><small>Paquetería El Salvador · Guatemala · Honduras</small></span></div>
+    <form id="rastrear" class="rastrear">
+      <input id="guia" placeholder="Número de guía (IX-0240100)" aria-label="Número de guía" required>
+      <button>Rastrear</button>
+    </form>
+  </header>
+
+  <main class="contenido">
+    <section id="detalle" class="tarjeta" hidden></section>
+
+    <div class="columnas">
+      <section class="tarjeta">
+        <div class="cabecera">
+          <h2>Envíos</h2>
+          <select id="filtro" aria-label="Filtrar por estado"><option value="">Todos los estados</option></select>
+        </div>
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Guía</th><th>Ruta</th><th>Destinatario</th><th class="num">Peso</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="filas"><tr><td colspan="6" class="vacio">Cargando…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Registrar envío</h2>
+        <form id="nuevo" class="formulario">
+          <label>Remitente <input name="remitente" maxlength="120" required></label>
+          <label>Destinatario <input name="destinatario" maxlength="120" required></label>
+          <label>Origen <input name="origen" maxlength="80" placeholder="San Miguel, SV" required></label>
+          <label>Destino <input name="destino" maxlength="80" placeholder="Tegucigalpa, HN" required></label>
+          <label>Peso (kg) <input name="peso_kg" type="number" step="0.01" min="0.01" required></label>
+          <p id="errores" class="error" role="alert"></p>
+          <button>Generar guía</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="tarjeta api">
+      <h2>API REST</h2>
+      <code>GET /api/envios</code> <code>GET /api/envios/:guia</code> <code>POST /api/envios</code>
+      <code>PATCH /api/envios/:guia</code> <code>DELETE /api/envios/:guia</code> <code>GET /api/info</code>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <span class="pie-titulo">Desplegado en Kubo PaaS · plan premium</span>
+    <ul id="stack" class="stack"></ul>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
