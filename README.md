@@ -34,3 +34,4 @@ curl -X POST https://istmo.kubo.dpdns.org/api/envios -H 'Content-Type: applicati
 ```
 
 La imagen corre sin root (UID 1000) en el puerto 3000. Las tablas se crean al arrancar si no existen.
+El pie de la página muestra el commit en línea: así se comprueba que cada `git push` llegó a producción.
